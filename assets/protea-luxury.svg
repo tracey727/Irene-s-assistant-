@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-label="Elegant protea flower">
+  <defs>
+    <linearGradient id="petal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5f2"/><stop offset=".45" stop-color="#eab9b1"/><stop offset="1" stop-color="#b76867"/></linearGradient>
+    <linearGradient id="petal2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f8dfd8"/><stop offset="1" stop-color="#bf7772"/></linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9ca28b"/><stop offset="1" stop-color="#58624f"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edd69d"/><stop offset=".5" stop-color="#c79b46"/><stop offset="1" stop-color="#8f6728"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <g opacity=".12" filter="url(#soft)"><ellipse cx="335" cy="275" rx="145" ry="160" fill="#b31f31"/></g>
+  <g fill="none" stroke="url(#gold)" stroke-width="3" stroke-linecap="round"><path d="M267 450C287 389 306 335 321 286"/><path d="M292 399c-52-13-91-39-116-78"/><path d="M303 360c58-17 103-46 134-85"/></g>
+  <g fill="url(#leaf)" opacity=".92" stroke="#6c745f" stroke-width="2">
+    <path d="M206 367c-58-3-102-31-130-86 60-5 108 20 143 73-5 5-9 9-13 13Z"/>
+    <path d="M224 330c-52-18-87-56-104-114 60 12 101 48 123 105-6 3-12 6-19 9Z"/>
+    <path d="M343 359c54-8 97-39 126-92-58 0-103 27-137 80 4 4 8 8 11 12Z"/>
+    <path d="M331 318c51-21 84-62 97-121-59 16-98 54-116 113 7 2 13 5 19 8Z"/>
+  </g>
+  <g transform="translate(80 64)">
+    <g stroke="#a95358" stroke-width="2">
+      <path d="M177 273C107 228 82 159 100 82c47 49 76 110 77 191Z" fill="url(#petal2)"/>
+      <path d="M195 276C144 207 139 129 180 58c31 64 37 136 15 218Z" fill="url(#petal)"/>
+      <path d="M214 277C182 196 197 118 254 55c12 70-1 143-40 222Z" fill="url(#petal2)"/>
+      <path d="M231 274c-7-84 28-155 99-207-8 72-41 141-99 207Z" fill="url(#petal)"/>
+      <path d="M247 266c20-78 70-135 148-171-29 67-77 124-148 171Z" fill="url(#petal2)"/>
+      <path d="M160 266C96 250 48 205 21 133c66 18 116 62 152 128Z" fill="url(#petal)"/>
+      <path d="M149 243C84 242 32 211 0 151c66-4 121 23 164 80Z" fill="url(#petal2)"/>
+      <path d="M260 248c64-21 110-68 134-141-65 21-114 65-146 131Z" fill="url(#petal)"/>
+    </g>
+    <g fill="#7f2a32" opacity=".85">
+      <ellipse cx="206" cy="197" rx="12" ry="54" transform="rotate(-25 206 197)"/>
+      <ellipse cx="225" cy="191" rx="11" ry="58" transform="rotate(-12 225 191)"/>
+      <ellipse cx="244" cy="191" rx="10" ry="58"/>
+      <ellipse cx="263" cy="195" rx="11" ry="56" transform="rotate(12 263 195)"/>
+      <ellipse cx="282" cy="203" rx="12" ry="50" transform="rotate(24 282 203)"/>
+    </g>
+    <g fill="#d9a46b" opacity=".9"><circle cx="213" cy="154" r="5"/><circle cx="232" cy="143" r="5"/><circle cx="252" cy="142" r="5"/><circle cx="272" cy="151" r="5"/></g>
+  </g>
+</svg>
