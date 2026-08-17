@@ -101,13 +101,6 @@
     return Date.now() < state.quietUntil;
   }
 
-  function deferIfQuiet(fn) {
-    if (!inClinicalQuiet()) return false;
-    const wait = Math.max(1000, state.quietUntil - Date.now() + 30000);
-    setTimeout(fn, wait);
-    return true;
-  }
-
   function checkPrompts() {
     if (!state.settings.enabled || !inWorkday()) return;
     if (inClinicalQuiet()) return;
@@ -126,9 +119,15 @@
     const lunch = timeToMinutes(state.settings.lunchTime);
     const snack2 = timeToMinutes(state.settings.afternoonSnackTime);
 
-    if (n >= snack1 && n < snack1 + 20) promptOnce('morning-snack','Gigi food check','Irene, have you eaten something this morning? Keep it easy — fruit, nuts, a boiled egg, yoghurt, or something else you packed.');
+    if (n >= snack1 && n < snack1 + 20) {
+      const idea=randomSnack();
+      promptOnce('morning-snack','Gigi food check',`Irene, have you eaten something this morning? Keep it easy. One option is ${idea.name}.`);
+    }
     if (n >= lunch && n < lunch + 25) promptOnce('lunch','Gigi lunch protection','Irene, this is your lunch window. Please eat before the next block of work if you can. Gigi can protect the time; you do not need to earn the break.');
-    if (n >= snack2 && n < snack2 + 20) promptOnce('afternoon-snack','Gigi afternoon check','Irene, quick fuel check. A small snack now may make the last part of the day easier.');
+    if (n >= snack2 && n < snack2 + 20) {
+      const idea=randomSnack();
+      promptOnce('afternoon-snack','Gigi afternoon check',`Irene, quick fuel check. If it suits you, ${idea.name} is a fast option for the last part of the day.`);
+    }
   }
 
   function startClinicalQuiet(minutes = state.settings.clinicalQuietMinutes) {
@@ -145,16 +144,19 @@
 
   function randomSnack() {
     const list = filteredSnacks();
-    return list[Math.floor(Math.random()*list.length)] || SNACKS[0];
+    return list[Math.floor(Math.random()*list.length)] || {name:'a piece of fruit you already enjoy',prep:'Under 1 minute'};
   }
 
   function filteredSnacks() {
     const notes = (state.settings.dietaryNotes||'').toLowerCase();
     return SNACKS.filter(s => {
       const n=s.name.toLowerCase();
-      if (notes.includes('dairy-free') || notes.includes('no dairy')) if (/yoghurt|cheese/.test(n)) return false;
-      if (notes.includes('nut-free') || notes.includes('no nuts')) if (/nut|peanut|almond|trail-mix/.test(n)) return false;
+      if (notes.includes('dairy-free') || notes.includes('no dairy') || notes.includes('lactose-free')) if (/yoghurt|cheese/.test(n)) return false;
+      if (notes.includes('nut-free') || notes.includes('no nuts') || notes.includes('nut allergy')) if (/nut|peanut|almond|trail-mix/.test(n)) return false;
+      if (notes.includes('gluten-free') || notes.includes('no gluten') || notes.includes('coeliac') || notes.includes('celiac')) if (/wholegrain|cracker/.test(n)) return false;
       if (notes.includes('vegetarian')) if (/tuna/.test(n)) return false;
+      if (notes.includes('vegan')) if (/egg|yoghurt|cheese|tuna/.test(n)) return false;
+      if (notes.includes('no seafood') || notes.includes('seafood-free') || notes.includes('fish allergy')) if (/tuna/.test(n)) return false;
       return true;
     });
   }
@@ -189,9 +191,9 @@
     if(!d){d=document.createElement('dialog');d.id='wellbeingDialog';d.className='secure-workspace';document.body.append(d);}
     const s=state.settings;
     const snacks=filteredSnacks();
-    d.innerHTML=`<div class="secure-workspace-inner"><button class="secure-close" id="wellbeingDialogClose">×</button><span class="secure-kicker">WELLBEING GUARD</span><h2>Keep Irene fed, hydrated and protected.</h2><p>These prompts are practical executive-function supports, not medical advice. Gigi can pause them during client work.</p><form id="wellbeingForm" class="secure-form"><label>Workday starts<input type="time" name="workdayStart" value="${s.workdayStart}"></label><label>Workday finishes<input type="time" name="workdayEnd" value="${s.workdayEnd}"></label><label>Water reminder every<select name="waterEveryMinutes">${[60,75,90,120].map(x=>`<option value="${x}" ${Number(s.waterEveryMinutes)===x?'selected':''}>${x} minutes</option>`).join('')}</select></label><label>Morning snack<input type="time" name="morningSnackTime" value="${s.morningSnackTime}"></label><label>Lunch reminder<input type="time" name="lunchTime" value="${s.lunchTime}"></label><label>Afternoon snack<input type="time" name="afternoonSnackTime" value="${s.afternoonSnackTime}"></label><label>Client quiet duration<select name="clinicalQuietMinutes">${[50,60,75,90].map(x=>`<option value="${x}" ${Number(s.clinicalQuietMinutes)===x?'selected':''}>${x} minutes</option>`).join('')}</select></label><label>Voice prompts<select name="voicePrompts"><option value="yes" ${s.voicePrompts?'selected':''}>On</option><option value="no" ${!s.voicePrompts?'selected':''}>Off</option></select></label><label class="wide">Dietary / allergy notes<input name="dietaryNotes" value="${escapeHtml(s.dietaryNotes)}" placeholder="e.g. dairy-free, nut-free, vegetarian"></label><div class="secure-form-actions wide"><button class="secure-primary" type="submit">Save wellbeing settings</button><button class="secure-secondary" id="testWellbeingPrompt" type="button">Test Gigi prompt</button><button class="secure-secondary" id="enableNotificationsBtn" type="button">Enable device notifications</button></div></form><div class="snack-library"><h3>Fast workday snack ideas</h3>${snacks.map(x=>`<div><b>${escapeHtml(x.name)}</b><span>${escapeHtml(x.prep)}</span></div>`).join('')}</div></div>`;
+    d.innerHTML=`<div class="secure-workspace-inner"><button class="secure-close" id="wellbeingDialogClose">×</button><span class="secure-kicker">WELLBEING GUARD</span><h2>Keep Irene fed, hydrated and protected.</h2><p>These prompts are practical executive-function supports, not medical advice. Gigi can pause them during client work.</p><form id="wellbeingForm" class="secure-form"><label>Workday starts<input type="time" name="workdayStart" value="${s.workdayStart}"></label><label>Workday finishes<input type="time" name="workdayEnd" value="${s.workdayEnd}"></label><label>Water reminder every<select name="waterEveryMinutes">${[60,75,90,120].map(x=>`<option value="${x}" ${Number(s.waterEveryMinutes)===x?'selected':''}>${x} minutes</option>`).join('')}</select></label><label>Morning snack<input type="time" name="morningSnackTime" value="${s.morningSnackTime}"></label><label>Lunch reminder<input type="time" name="lunchTime" value="${s.lunchTime}"></label><label>Afternoon snack<input type="time" name="afternoonSnackTime" value="${s.afternoonSnackTime}"></label><label>Client quiet duration<select name="clinicalQuietMinutes">${[50,60,75,90].map(x=>`<option value="${x}" ${Number(s.clinicalQuietMinutes)===x?'selected':''}>${x} minutes</option>`).join('')}</select></label><label>Voice prompts<select name="voicePrompts"><option value="yes" ${s.voicePrompts?'selected':''}>On</option><option value="no" ${!s.voicePrompts?'selected':''}>Off</option></select></label><label class="wide">Dietary / allergy notes<input name="dietaryNotes" value="${escapeHtml(s.dietaryNotes)}" placeholder="e.g. gluten-free, dairy-free, nut-free, vegetarian, vegan, no seafood"></label><div class="secure-form-actions wide"><button class="secure-primary" type="submit">Save wellbeing settings</button><button class="secure-secondary" id="testWellbeingPrompt" type="button">Test Gigi prompt</button><button class="secure-secondary" id="enableNotificationsBtn" type="button">Enable device notifications</button></div></form><div class="snack-library"><h3>Fast workday snack ideas</h3>${snacks.map(x=>`<div><b>${escapeHtml(x.name)}</b><span>${escapeHtml(x.prep)}</span></div>`).join('')}</div></div>`;
     $('#wellbeingDialogClose').onclick=()=>d.close();
-    $('#wellbeingForm').onsubmit=e=>{e.preventDefault();const fd=new FormData(e.currentTarget);s.workdayStart=fd.get('workdayStart');s.workdayEnd=fd.get('workdayEnd');s.waterEveryMinutes=Number(fd.get('waterEveryMinutes'));s.morningSnackTime=fd.get('morningSnackTime');s.lunchTime=fd.get('lunchTime');s.afternoonSnackTime=fd.get('afternoonSnackTime');s.clinicalQuietMinutes=Number(fd.get('clinicalQuietMinutes'));s.voicePrompts=fd.get('voicePrompts')==='yes';s.dietaryNotes=fd.get('dietaryNotes')||'';saveSettings();injectDashboardCard();showBanner('Wellbeing settings saved','Gigi will use Irene’s chosen food and water schedule.');d.close();};
+    $('#wellbeingForm').onsubmit=e=>{e.preventDefault();const fd=new FormData(e.currentTarget);s.workdayStart=fd.get('workdayStart');s.workdayEnd=fd.get('workdayEnd');s.waterEveryMinutes=Number(fd.get('waterEveryMinutes'));s.morningSnackTime=fd.get('morningSnackTime');s.lunchTime=fd.get('lunchTime');s.afternoonSnackTime=fd.get('afternoonSnackTime');s.clinicalQuietMinutes=Number(fd.get('clinicalQuietMinutes'));s.voicePrompts=fd.get('voicePrompts')==='yes';s.dietaryNotes=fd.get('dietaryNotes')||'';saveSettings();const card=$('#gigiWellbeingCard');if(card)card.remove();injectDashboardCard();showBanner('Wellbeing settings saved','Gigi will use Irene’s chosen food and water schedule.');d.close();};
     $('#testWellbeingPrompt').onclick=()=>notify('Gigi wellbeing check','Irene, quick check: water, something to eat, and a moment to reset if you need it.');
     $('#enableNotificationsBtn').onclick=async()=>{if(!('Notification'in window))return showBanner('Notifications unavailable','This browser does not support web notifications.');const p=await Notification.requestPermission();state.settings.desktopNotifications=p==='granted';saveSettings();showBanner('Notification setting',p==='granted'?'Device notifications are enabled while the web app can run.':'Notifications were not enabled. In-app prompts will still work.');};
     d.showModal();
