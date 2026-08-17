@@ -1,0 +1,10 @@
+{
+  "name":"Gigi — Irene's Executive Assistant",
+  "short_name":"Gigi",
+  "start_url":"/",
+  "display":"standalone",
+  "background_color":"#fbf4e9",
+  "theme_color":"#3b0810",
+  "description":"Voice-led executive assistance, realistic time management and business organisation for Irene.",
+  "icons":[{"src":"/assets/gigi-mark.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
