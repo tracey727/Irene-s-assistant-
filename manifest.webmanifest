@@ -5,6 +5,6 @@
   "display":"standalone",
   "background_color":"#f8faf7",
   "theme_color":"#3b0810",
-  "description":"Irene's private encrypted executive assistant for priorities, time protection, follow-up, decisions and wellbeing.",
+  "description":"Irene's private encrypted executive assistant for appointments, realistic day structure, priorities, food and water prompts, personal growth, follow-up and decisions.",
   "icons":[{"src":"/assets/gigi-mark.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
