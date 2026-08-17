@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#3b0810" />
+  <meta name="description" content="Gigi — Irene's executive voice assistant and realistic time-management dashboard." />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/assets/gigi-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Gigi — Executive Assistant</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero" aria-label="Gigi executive assistant header">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Good evening,</p>
+        <h1>Irene <span aria-hidden="true">♡</span></h1>
+        <p class="hero-subtitle">You lead. Gigi handles the rest.</p>
+      </div>
+      <div class="brand-lockup" aria-label="Gigi Your Executive Assistant">
+        <span class="crown" aria-hidden="true">♛</span>
+        <div class="gigi-script">Gigi</div>
+        <div class="brand-caption">Your Executive Assistant</div>
+      </div>
+      <div class="heritage-token" title="A subtle protea motif — a token of South African heritage" aria-label="Protea heritage motif">
+        <svg viewBox="0 0 120 120" role="img" aria-label="Stylised protea flower"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 95c-7-24-7-50 0-71 7 21 7 47 0 71Z"/><path d="M58 87C42 73 33 52 35 31c16 11 25 30 23 56Z"/><path d="M62 87c16-14 25-35 23-56-16 11-25 30-23 56Z"/><path d="M50 76C34 65 24 49 22 33c17 7 28 20 28 43Z"/><path d="M70 76c16-11 26-27 28-43-17 7-28 20-28 43Z"/><path d="M45 61c-10-4-19-12-24-23 13 1 23 8 30 21"/><path d="M75 61c10-4 19-12 24-23-13 1-23 8-30 21"/><path d="M60 98c-12 1-23 4-33 10M60 98c12 1 23 4 33 10"/></g></svg>
+        <span>Protea</span>
+      </div>
+      <section class="voice-console" aria-label="Gigi voice controls">
+        <button class="mic-button" id="micButton" aria-label="Speak to Gigi" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2Z"/></svg></button>
+        <div class="wave" id="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="voice-toggle-group"><span>Gigi Voice</span><button class="lux-toggle is-on" id="gigiToggle" type="button" role="switch" aria-checked="true" aria-label="Toggle Gigi voice"><span class="toggle-label" id="toggleLabel">ON</span><span class="toggle-knob" aria-hidden="true"></span></button></div>
+        <button class="speak-hint" id="speakHint" type="button">Tap to speak with Gigi</button>
+      </section>
+      <div class="voice-status" id="voiceStatus" role="status" aria-live="polite">Gigi is ready.</div>
+    </header>
+    <main class="dashboard" id="dashboardView">
+      <section class="metrics-grid" aria-label="Executive summary">
+        <button class="metric-card" data-panel="time" type="button"><span class="metric-icon">◷</span><span class="metric-label">Usable Time Today</span><strong id="usableTime">5h 20m</strong><small id="capacityNote">Realistic capacity protected</small><span class="mini-progress"><i id="timeProgress"></i></span></button>
+        <button class="metric-card" data-panel="approvals" type="button"><span class="metric-icon">✓</span><span class="metric-label">Approvals</span><strong id="approvalCount">3</strong><small class="urgent" id="urgentApprovalCount">2 urgent</small></button>
+        <button class="metric-card" data-panel="clients" type="button"><span class="metric-icon">◎</span><span class="metric-label">Active Clients</span><strong>12</strong><small class="positive">Demo data only</small></button>
+        <button class="metric-card" data-panel="business" type="button"><span class="metric-icon">↗</span><span class="metric-label">Business Progress</span><strong>78%</strong><small class="positive">On track</small><span class="mini-progress"><i style="width:78%"></i></span></button>
+      </section>
+      <section class="content-grid">
+        <article class="schedule-card"><div class="section-header inverse"><div><span class="section-kicker">TODAY</span><h2 id="todayDate">Monday, 17 August</h2></div><button type="button" class="ghost-button" id="viewDay">View Full Day <span>›</span></button></div><div class="timeline" id="timeline"></div><blockquote>“Structure creates freedom.” <cite>— Gigi</cite></blockquote></article>
+        <aside class="attention-stack"><article class="attention-card"><div class="section-header"><div><span class="section-kicker">FOCUS</span><h2>What needs my attention now?</h2></div></div><div id="attentionList" class="attention-list"></div></article><button class="priority-card" id="priorityCard" type="button"><div class="priority-head"><span>TODAY'S PRIORITY</span><span>★</span></div><strong>Deep Work Block</strong><span id="deepWorkTime">2:15 PM – 4:15 PM</span><small>Focus. Create. Lead.</small><div class="mountain" aria-hidden="true"></div></button></aside>
+      </section>
+      <section class="reassurance-bar"><div class="medallion">G</div><div><strong>You don't have to do it all.</strong><span>You just have to do what matters.</span></div><button id="breatheButton" type="button"><span>BREATHE</span><small>You've got this.</small><b>›</b></button></section>
+    </main>
+    <section class="secondary-view" id="calendarView" hidden><div class="page-heading"><span>Calendar</span><h2>Realistic time, not wishful time.</h2><p>Every session, transition and protected block has a duration.</p></div><div class="calendar-list" id="calendarList"></div></section>
+    <section class="secondary-view" id="clientsView" hidden><div class="page-heading"><span>Clients</span><h2>Client work without lost follow-up.</h2><p>Demo-only placeholders. No real client information is stored in this prototype.</p></div><div class="module-grid"><button class="module-card" data-panel="ndis"><b>NDIS Actions</b><span>Letters, reports and approvals</span><em>2 ready</em></button><button class="module-card" data-panel="client-followup"><b>Follow-ups</b><span>Calls and requested documents</span><em>3 open</em></button><button class="module-card" data-panel="referrals"><b>Referrals</b><span>No Lost Referral™ workflow</span><em>4 waiting</em></button><button class="module-card" data-panel="continuity"><b>Continuity</b><span>Handover and leave cover</span><em>All covered</em></button></div></section>
+    <section class="secondary-view" id="moreView" hidden><div class="page-heading"><span>Command Centre</span><h2>Everything Irene needs, categorised.</h2><p>Personal, Business, Operations, Clients and Supervision stay separate but coordinated.</p></div><div class="module-grid"><button class="module-card" data-panel="personal"><b>Personal</b><span>Protected commitments and breaks</span><em>Private</em></button><button class="module-card" data-panel="business"><b>Business</b><span>Finance, decisions, deadlines</span><em>78%</em></button><button class="module-card" data-panel="operations"><b>Operations</b><span>Rosters, rooms, referrals</span><em>Stable</em></button><button class="module-card" data-panel="supervision"><b>Supervision</b><span>Protected clinical governance time</span><em>1 today</em></button><button class="module-card" data-panel="waiting"><b>Waiting on Someone</b><span>Automatic chase list</span><em>3 items</em></button><button class="module-card" data-panel="decisions"><b>Decision Register</b><span>What was decided and why</span><em>Current</em></button><button class="module-card" data-panel="ideas"><b>Idea Parking Lot</b><span>Capture without derailing today</span><em>7 ideas</em></button><button class="module-card" data-panel="review"><b>CEO Review</b><span>Weekly realistic business review</span><em>Friday</em></button></div></section>
+    <nav class="bottom-nav" aria-label="Primary navigation"><button class="nav-item active" data-view="dashboard" type="button"><span>⌂</span><small>Dashboard</small></button><button class="nav-item" data-view="calendar" type="button"><span>▣</span><small>Calendar</small></button><button class="nav-gigi" id="navGigi" type="button" aria-label="Speak to Gigi"><span class="nav-wave">▥</span></button><button class="nav-item" data-view="clients" type="button"><span>◎</span><small>Clients</small></button><button class="nav-item" data-view="more" type="button"><span>•••</span><small>More</small></button></nav>
+  </div>
+  <dialog id="actionDialog" class="action-dialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button></form><div id="dialogContent"></div></dialog><div class="toast" id="toast" role="status" aria-live="polite"></div><script src="/app.js" defer></script>
+</body>
+</html>
