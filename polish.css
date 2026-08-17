@@ -1,12 +1,12 @@
-/* Irene visual refinement — cleaner executive hierarchy, lighter sage, less visual blending */
+/* Irene visual refinement — cleaner executive hierarchy, much lighter sage background, less visual blending */
 :root{
   --surface:#ffffff;
-  --surface-soft:#fbfaf7;
-  --surface-warm:#f7f2ec;
+  --surface-soft:#fdfefc;
+  --surface-warm:#fafbf8;
   --surface-rose:#fbf4f4;
-  --sage-050:#f5f8f5;
-  --sage-100:#edf3ee;
-  --sage-200:#e4ece6;
+  --sage-050:#fbfdfb;
+  --sage-100:#f7faf7;
+  --sage-200:#f0f5f0;
   --sage-500:#819487;
   --sage-700:#5f7266;
   --line-clean:#e7dfd8;
@@ -14,14 +14,14 @@
   --shadow-clean:0 8px 24px rgba(45,25,28,.055);
   --shadow-lift:0 16px 40px rgba(45,25,28,.085);
 }
-html,body{background:#f3f0ec}
+html,body{background:#f8faf7}
 body{color:#2d2224}
-.app-shell{background:#f8f6f2;border:1px solid #ddd4cc;box-shadow:0 24px 70px rgba(52,25,30,.12)}
+.app-shell{background:#fbfcfa;border:1px solid #ddd4cc;box-shadow:0 24px 70px rgba(52,25,30,.12)}
 .hero{background:#3a0810;box-shadow:inset 0 -1px 0 rgba(255,255,255,.08)}
 .hero:after{opacity:.3}
 .hero-glow-one{opacity:.08}
 .hero-glow-two{opacity:.05}
-.dashboard,.secondary-view{background:#f8f6f2}
+.dashboard,.secondary-view{background:#fbfcfa}
 .metrics-grid{gap:22px}
 .metric-card{background:#fff;border:1px solid var(--line-clean);box-shadow:var(--shadow-clean);border-radius:20px;min-height:170px}
 .metric-card:hover{border-color:#cdbdc0;box-shadow:var(--shadow-lift)}
@@ -72,7 +72,7 @@ body{color:#2d2224}
 .privacy-promises span{background:#faf8f5;border:1px solid #e9e1db}
 .gigi-wellbeing-banner{background:#45101a;border-color:#d8bd82}
 .bottom-nav{background:#2f070d;box-shadow:0 -8px 24px rgba(57,8,16,.10)}
-/* Make any success/green treatment intentionally very faded */
+/* Keep any success/green treatment intentionally whisper-soft */
 .positive,.success,.status-success,[data-status="success"]{color:var(--sage-700)!important}
 .success,.status-success,[data-status="success"]{background:var(--sage-100)!important;border-color:var(--sage-200)!important}
-@media(max-width:900px){body{background:#f8f6f2}.dashboard,.secondary-view{background:#f8f6f2}.metrics-grid,.content-grid,.module-grid{gap:14px}}
+@media(max-width:900px){body{background:#f8faf7}.dashboard,.secondary-view{background:#fbfcfa}.metrics-grid,.content-grid,.module-grid{gap:14px}}
