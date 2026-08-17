@@ -5,64 +5,123 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#3b0810" />
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
-  <meta name="description" content="Gigi — Irene's private executive voice assistant, realistic time-management dashboard and encrypted device vault." />
+  <meta name="description" content="Gigi — Irene's private executive assistant for priorities, time protection, follow-up, decisions and wellbeing." />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/assets/gigi-mark.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/security.css" />
-  <link rel="stylesheet" href="/wellbeing.css" />
   <link rel="stylesheet" href="/polish.css" />
+  <link rel="stylesheet" href="/workspace.css" />
   <title>Gigi — Irene's Private Executive Assistant</title>
 </head>
 <body>
-  <div class="app-shell">
+  <div class="app-shell" id="appShell" aria-busy="true">
     <header class="hero" aria-label="Gigi executive assistant header">
-      <div class="hero-glow hero-glow-one"></div>
-      <div class="hero-glow hero-glow-two"></div>
+      <div class="hero-glow hero-glow-one"></div><div class="hero-glow hero-glow-two"></div>
       <div class="hero-copy">
-        <p class="eyebrow">Good evening,</p>
+        <p class="eyebrow" id="greeting">Good evening,</p>
         <h1>Irene <span aria-hidden="true">♡</span></h1>
-        <p class="hero-subtitle">You lead. Gigi handles the rest.</p>
+        <p class="hero-subtitle">You lead. Gigi handles what needs remembering.</p>
       </div>
       <div class="brand-lockup" aria-label="Gigi Your Executive Assistant">
-        <span class="crown" aria-hidden="true">♛</span>
-        <div class="gigi-script">Gigi</div>
-        <div class="brand-caption">Your Executive Assistant</div>
+        <span class="crown" aria-hidden="true">♛</span><div class="gigi-script">Gigi</div><div class="brand-caption">Your Executive Assistant</div>
       </div>
-      <div class="heritage-token" title="A subtle protea motif — a token of South African heritage" aria-label="Protea heritage motif">
-        <svg viewBox="0 0 120 120" role="img" aria-label="Stylised protea flower"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 95c-7-24-7-50 0-71 7 21 7 47 0 71Z"/><path d="M58 87C42 73 33 52 35 31c16 11 25 30 23 56Z"/><path d="M62 87c16-14 25-35 23-56-16 11-25 30-23 56Z"/><path d="M50 76C34 65 24 49 22 33c17 7 28 20 28 43Z"/><path d="M70 76c16-11 26-27 28-43-17 7-28 20-28 43Z"/><path d="M45 61c-10-4-19-12-24-23 13 1 23 8 30 21"/><path d="M75 61c10-4 19-12 24-23-13 1-23 8-30 21"/><path d="M60 98c-12 1-23 4-33 10M60 98c12 1 23 4 33 10"/></g></svg>
-        <span>Protea</span>
-      </div>
+      <div class="heritage-token" title="Protea motif" aria-label="Protea motif"><svg viewBox="0 0 120 120" role="img" aria-label="Stylised protea flower"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M60 95c-7-24-7-50 0-71 7 21 7 47 0 71Z"/><path d="M58 87C42 73 33 52 35 31c16 11 25 30 23 56Z"/><path d="M62 87c16-14 25-35 23-56-16 11-25 30-23 56Z"/><path d="M50 76C34 65 24 49 22 33c17 7 28 20 28 43Z"/><path d="M70 76c16-11 26-27 28-43-17 7-28 20-28 43Z"/></g></svg><span>Protea</span></div>
       <section class="voice-console" aria-label="Gigi voice controls">
         <button class="mic-button" id="micButton" aria-label="Speak to Gigi" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2Z"/></svg></button>
         <div class="wave" id="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="voice-toggle-group"><span>Gigi Voice</span><button class="lux-toggle is-on" id="gigiToggle" type="button" role="switch" aria-checked="true" aria-label="Toggle Gigi voice"><span class="toggle-label" id="toggleLabel">ON</span><span class="toggle-knob" aria-hidden="true"></span></button></div>
+        <div class="voice-toggle-group"><span>Gigi Voice</span><button class="lux-toggle is-on" id="gigiToggle" type="button" role="switch" aria-checked="true"><span class="toggle-label" id="toggleLabel">ON</span><span class="toggle-knob" aria-hidden="true"></span></button></div>
         <button class="speak-hint" id="speakHint" type="button">Tap to speak with Gigi</button>
       </section>
-      <div class="voice-status" id="voiceStatus" role="status" aria-live="polite">Gigi is ready.</div>
+      <div class="voice-status" id="voiceStatus" role="status" aria-live="polite">Unlock Gigi to begin.</div>
     </header>
+
     <main class="dashboard" id="dashboardView">
+      <section class="security-strip" id="securityStrip"><span>🔐 <b>Private Device Mode</b></span><span>Encrypted local workspace • auto-lock • no therapy notes</span><button id="quickLockBtn" type="button">Lock now</button></section>
       <section class="metrics-grid" aria-label="Executive summary">
-        <button class="metric-card" data-panel="time" type="button"><span class="metric-icon">◷</span><span class="metric-label">Usable Time Today</span><strong id="usableTime">5h 20m</strong><small id="capacityNote">Realistic capacity protected</small><span class="mini-progress"><i id="timeProgress"></i></span></button>
-        <button class="metric-card" data-panel="approvals" type="button"><span class="metric-icon">✓</span><span class="metric-label">Approvals</span><strong id="approvalCount">3</strong><small class="urgent" id="urgentApprovalCount">2 urgent</small></button>
-        <button class="metric-card" data-panel="clients" type="button"><span class="metric-icon">◎</span><span class="metric-label">Active Clients</span><strong>12</strong><small class="positive">Dashboard demonstration</small></button>
-        <button class="metric-card" data-panel="business" type="button"><span class="metric-icon">↗</span><span class="metric-label">Business Progress</span><strong>78%</strong><small class="positive">On track</small><span class="mini-progress"><i style="width:78%"></i></span></button>
+        <button class="metric-card" data-panel="calendar" type="button"><span class="metric-icon">◷</span><span class="metric-label">Usable Time Today</span><strong id="usableTime">—</strong><small id="capacityNote">Unlock Gigi</small><span class="mini-progress"><i id="timeProgress"></i></span></button>
+        <button class="metric-card" data-panel="approvals" type="button"><span class="metric-icon">✓</span><span class="metric-label">Approvals</span><strong id="approvalCount">—</strong><small id="approvalNote">Waiting for unlock</small></button>
+        <button class="metric-card" data-panel="actions" type="button"><span class="metric-icon">◎</span><span class="metric-label">Open Actions</span><strong id="actionCount">—</strong><small id="actionNote">Waiting for unlock</small></button>
+        <button class="metric-card" data-panel="waiting" type="button"><span class="metric-icon">↗</span><span class="metric-label">Waiting on Someone</span><strong id="waitingCount">—</strong><small id="waitingNote">Waiting for unlock</small></button>
       </section>
+
+      <section class="protection-row" id="protectionRow">
+        <div><span class="section-kicker">PROTECTION</span><b id="loadStatus">Gigi will check workload after unlock.</b><small id="loadDetail">Workload Guard, deadline radar and clinical quiet protection are built in.</small></div>
+        <button id="quietModeBtn" type="button">🔕 Quiet 60 min</button>
+      </section>
+
       <section class="content-grid">
-        <article class="schedule-card"><div class="section-header inverse"><div><span class="section-kicker">TODAY</span><h2 id="todayDate">Monday, 17 August</h2></div><button type="button" class="ghost-button" id="viewDay">View Full Day <span>›</span></button></div><div class="timeline" id="timeline"></div><blockquote>“Structure creates freedom.” <cite>— Gigi</cite></blockquote></article>
-        <aside class="attention-stack"><article class="attention-card"><div class="section-header"><div><span class="section-kicker">FOCUS</span><h2>What needs my attention now?</h2></div></div><div id="attentionList" class="attention-list"></div></article><button class="priority-card" id="priorityCard" type="button"><div class="priority-head"><span>TODAY'S PRIORITY</span><span>★</span></div><strong>Deep Work Block</strong><span id="deepWorkTime">2:15 PM – 4:15 PM</span><small>Focus. Create. Lead.</small><div class="mountain" aria-hidden="true"></div></button></aside>
+        <article class="schedule-card">
+          <div class="section-header inverse"><div><span class="section-kicker">TODAY</span><h2 id="todayDate">Today</h2></div><button type="button" class="ghost-button" id="addBlockBtn">+ Time block</button></div>
+          <div class="timeline" id="timeline"></div>
+          <blockquote id="scheduleMessage">“Protect what matters before filling what is empty.” <cite>— Gigi</cite></blockquote>
+        </article>
+        <aside class="attention-stack">
+          <article class="attention-card"><div class="section-header"><div><span class="section-kicker">FOCUS</span><h2>What needs Irene’s attention now?</h2></div></div><div id="attentionList" class="attention-list"></div></article>
+          <button class="priority-card" id="priorityCard" type="button"><div class="priority-head"><span>TODAY'S PRIORITY</span><span>★</span></div><strong id="priorityTitle">Unlock Gigi</strong><span id="priorityMeta">Your protected priority will appear here.</span><small id="priorityHint">Focus. Create. Lead.</small><div class="mountain" aria-hidden="true"></div></button>
+        </aside>
       </section>
-      <section class="reassurance-bar"><div class="medallion">G</div><div><strong>You don't have to do it all.</strong><span>You just have to do what matters.</span></div><button id="breatheButton" type="button"><span>BREATHE</span><small>You've got this.</small><b>›</b></button></section>
+
+      <section class="wellbeing-card" id="wellbeingCard">
+        <div><span class="section-kicker">GIGI WELLBEING GUARD</span><h3>Food, water and energy count as part of the workday.</h3><p id="wellbeingStatus">Gentle reminders run while Gigi is open and pause during protected clinical blocks.</p></div>
+        <div class="wellbeing-quick"><button id="waterNowBtn" type="button">💧 Water logged</button><button id="snackIdeaBtn" type="button">🍎 Snack idea</button><button id="wellbeingSettingsBtn" type="button">⚙ Reminder settings</button></div>
+        <div class="snack-suggestion"><b>Quick idea</b><span id="snackSuggestion">Fruit + a simple protein option</span><small>Keep preparation easy.</small></div>
+      </section>
+
+      <section class="reassurance-bar"><div class="medallion">G</div><div><strong>You don't have to do it all.</strong><span>You just have to do what matters.</span></div><button id="shutdownBtn" type="button"><span>SHUT DOWN</span><small>Close the workday cleanly.</small><b>›</b></button></section>
     </main>
-    <section class="secondary-view" id="calendarView" hidden><div class="page-heading"><span>Calendar</span><h2>Realistic time, not wishful time.</h2><p>Every session, transition and protected block has a duration.</p></div><div class="calendar-list" id="calendarList"></div></section>
-    <section class="secondary-view" id="clientsView" hidden><div class="page-heading"><span>Clients</span><h2>Client work without lost follow-up.</h2><p>The secure vault can hold Irene's own encrypted client work locally on this device; the cards below are workflow demonstrations only.</p></div><div class="module-grid"><button class="module-card" data-panel="ndis"><b>NDIS Actions</b><span>Letters, reports and approvals</span><em>2 ready</em></button><button class="module-card" data-panel="client-followup"><b>Follow-ups</b><span>Calls and requested documents</span><em>3 open</em></button><button class="module-card" data-panel="referrals"><b>Referrals</b><span>No Lost Referral™ workflow</span><em>4 waiting</em></button><button class="module-card" data-panel="continuity"><b>Continuity</b><span>Handover and leave cover</span><em>All covered</em></button></div></section>
-    <section class="secondary-view" id="moreView" hidden><div class="page-heading"><span>Command Centre</span><h2>Everything Irene needs, categorised.</h2><p>Personal, Business, Operations, Clients and Supervision stay separate but coordinated. Secure Vault, Workload Guard and Wellbeing Guard appear here after unlock.</p></div><div class="module-grid"><button class="module-card" data-panel="personal"><b>Personal</b><span>Protected commitments and breaks</span><em>Private</em></button><button class="module-card" data-panel="business"><b>Business</b><span>Finance, decisions, deadlines</span><em>78%</em></button><button class="module-card" data-panel="operations"><b>Operations</b><span>Rosters, rooms, referrals</span><em>Stable</em></button><button class="module-card" data-panel="supervision"><b>Supervision</b><span>Protected clinical governance time</span><em>1 today</em></button><button class="module-card" data-panel="waiting"><b>Waiting on Someone</b><span>Automatic chase list</span><em>3 items</em></button><button class="module-card" data-panel="decisions"><b>Decision Register</b><span>What was decided and why</span><em>Current</em></button><button class="module-card" data-panel="ideas"><b>Idea Parking Lot</b><span>Capture without derailing today</span><em>7 ideas</em></button><button class="module-card" data-panel="review"><b>CEO Review</b><span>Weekly realistic business review</span><em>Friday</em></button></div></section>
-    <nav class="bottom-nav" aria-label="Primary navigation"><button class="nav-item active" data-view="dashboard" type="button"><span>⌂</span><small>Dashboard</small></button><button class="nav-item" data-view="calendar" type="button"><span>▣</span><small>Calendar</small></button><button class="nav-gigi" id="navGigi" type="button" aria-label="Speak to Gigi"><span class="nav-wave">▥</span></button><button class="nav-item" data-view="clients" type="button"><span>◎</span><small>Clients</small></button><button class="nav-item" data-view="more" type="button"><span>•••</span><small>More</small></button></nav>
+
+    <section class="secondary-view" id="calendarView" hidden>
+      <div class="page-heading"><span>Calendar</span><h2>Realistic time, not wishful time.</h2><p>Local Gigi planning protects duration, buffers, breaks and deep-work time.</p></div>
+      <div class="page-actions"><button class="primary-action" id="calendarAddBtn" type="button">+ Add time block</button><button class="secondary-action" id="calendarTodayBtn" type="button">Today</button></div>
+      <div class="calendar-list" id="calendarList"></div>
+    </section>
+
+    <section class="secondary-view" id="actionsView" hidden>
+      <div class="page-heading"><span>Action Centre</span><h2>One place for everything Gigi must remember.</h2><p>Capture, assign, chase, approve, close. Keep therapy notes and clinical content out of this personal assistant.</p></div>
+      <div class="module-grid action-hub-grid">
+        <button class="module-card" data-manager="inbox"><b>Single Capture Inbox</b><span>Catch it now, sort it later</span><em id="inboxBadge">0</em></button>
+        <button class="module-card" data-manager="actions"><b>Action List</b><span>Owner, priority and due date</span><em id="actionsBadge">0</em></button>
+        <button class="module-card" data-manager="approvals"><b>Approval Queue</b><span>Only decisions Irene must make</span><em id="approvalsBadge">0</em></button>
+        <button class="module-card" data-manager="waiting"><b>Waiting on Someone</b><span>Automatic chase list</span><em id="waitingBadge">0</em></button>
+        <button class="module-card" data-manager="deadlines"><b>Deadline Radar</b><span>Upcoming and overdue</span><em id="deadlinesBadge">0</em></button>
+        <button class="module-card" data-manager="followups"><b>Follow-up Manager</b><span>Close every loop</span><em id="followupsBadge">0</em></button>
+      </div>
+    </section>
+
+    <section class="secondary-view" id="moreView" hidden>
+      <div class="page-heading"><span>Command Centre</span><h2>Everything Irene needs, separated but coordinated.</h2><p>Gigi stores this workspace encrypted on Irene’s device. Use references only for client-related admin; do not enter therapy notes, diagnoses or treatment content.</p></div>
+      <div class="module-grid">
+        <button class="module-card" data-manager="decisions"><b>Decision Register</b><span>What was decided and why</span><em>Live</em></button>
+        <button class="module-card" data-manager="ideas"><b>Idea Parking Lot</b><span>Capture without derailing today</span><em>Live</em></button>
+        <button class="module-card" data-manager="meetings"><b>Meeting Manager</b><span>Agenda, actions, follow-through</span><em>Live</em></button>
+        <button class="module-card" data-manager="people"><b>People & Relationship Memory</b><span>Staff and business contact follow-up</span><em>Private</em></button>
+        <button class="module-card" data-manager="documents"><b>Document Finder</b><span>Store document names and locations, not clinical files</span><em>Reference only</em></button>
+        <button class="module-card" data-panel="delegation"><b>Delegation Engine</b><span>See owned work and unowned work</span><em>Active</em></button>
+        <button class="module-card" data-panel="business"><b>Business Dashboard</b><span>Actions, deadlines, waiting and decisions</span><em>Live</em></button>
+        <button class="module-card" data-panel="weekly"><b>Weekly CEO Review</b><span>What moved, what is stuck, what matters next</span><em>Weekly</em></button>
+        <button class="module-card" data-panel="monthly"><b>Monthly Business Review</b><span>Trend the workload and unfinished loops</span><em>Monthly</em></button>
+        <button class="module-card" data-panel="workload"><b>Workload & Energy Guard</b><span>Overload detection and energy-aware planning</span><em>Protected</em></button>
+        <button class="module-card" data-panel="settings"><b>Gigi Settings</b><span>Workday, buffers, energy and reminders</span><em>Personal</em></button>
+        <button class="module-card" data-panel="security"><b>Security & Encrypted Backup</b><span>Lock, export or restore Irene’s vault</span><em>Encrypted</em></button>
+      </div>
+      <div class="privacy-boundary"><b>Privacy boundary</b><span>Gigi is Irene’s executive-assistant workspace. It is not an electronic health record. Do not store therapy notes, diagnoses, assessments, treatment plans or identifiable clinical narratives here.</span></div>
+    </section>
+
+    <nav class="bottom-nav" aria-label="Primary navigation">
+      <button class="nav-item active" data-view="dashboard" type="button"><span>⌂</span><small>Today</small></button>
+      <button class="nav-item" data-view="calendar" type="button"><span>▣</span><small>Calendar</small></button>
+      <button class="nav-gigi" id="navGigi" type="button" aria-label="Quick capture with Gigi"><span class="nav-wave">＋</span></button>
+      <button class="nav-item" data-view="actions" type="button"><span>✓</span><small>Actions</small></button>
+      <button class="nav-item" data-view="more" type="button"><span>•••</span><small>More</small></button>
+    </nav>
   </div>
+
   <dialog id="actionDialog" class="action-dialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button></form><div id="dialogContent"></div></dialog>
+  <dialog id="captureDialog" class="action-dialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button></form><div class="dialog-body"><span class="dialog-kicker">QUICK CAPTURE</span><h3>Tell Gigi what must not be forgotten.</h3><form id="captureForm" class="gigi-form"><label>Put it in<select name="collection"><option value="inbox">Inbox</option><option value="actions">Action</option><option value="approvals">Approval</option><option value="waiting">Waiting on someone</option><option value="deadlines">Deadline</option><option value="decisions">Decision</option><option value="ideas">Idea</option><option value="meetings">Meeting</option><option value="followups">Follow-up</option></select></label><label>Title<input name="title" maxlength="140" required placeholder="What needs remembering?" /></label><label>Owner / person<input name="owner" maxlength="80" placeholder="Optional" /></label><label>Due date<input name="due" type="date" /></label><label>Priority<select name="priority"><option>Normal</option><option>High</option><option>Critical</option><option>Low</option></select></label><label class="wide">Details<textarea name="details" rows="4" maxlength="1200" placeholder="Operational or personal context only. No therapy notes or clinical narrative."></textarea></label><div class="dialog-actions wide"><button class="primary-action" type="submit">Save to Gigi</button></div></form></div></dialog>
+  <dialog id="scheduleDialog" class="action-dialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button></form><div class="dialog-body"><span class="dialog-kicker">TIME PROTECTION</span><h3>Add a real time block</h3><form id="scheduleForm" class="gigi-form"><label>Date<input name="date" type="date" required /></label><label>Title<input name="title" maxlength="100" required /></label><label>Start<input name="start" type="time" required /></label><label>End<input name="end" type="time" required /></label><label>Category<select name="category"><option>Business</option><option>Clinical</option><option>Supervision</option><option>Admin</option><option>Personal</option><option>Break</option></select></label><label>Protection<select name="protected"><option value="yes">Protected</option><option value="no">Flexible</option></select></label><div class="dialog-actions wide"><button class="primary-action" type="submit">Protect this time</button></div></form></div></dialog>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="/app.js" defer></script>
-  <script src="/secure-features.js" defer></script>
-  <script src="/wellbeing.js" defer></script>
+  <script src="/gigi.js" defer></script>
 </body>
 </html>
