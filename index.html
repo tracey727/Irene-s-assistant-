@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#3b0810" />
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
-  <meta name="description" content="Gigi — Irene's private executive assistant for priorities, time protection, follow-up, decisions and wellbeing." />
+  <meta name="description" content="Gigi — Irene's private executive assistant for appointments, priorities, time protection, follow-up, decisions, wellbeing and personal growth." />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/assets/gigi-mark.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/security.css" />
   <link rel="stylesheet" href="/polish.css" />
   <link rel="stylesheet" href="/workspace.css" />
+  <link rel="stylesheet" href="/day-architect.css" />
   <title>Gigi — Irene's Private Executive Assistant</title>
 </head>
 <body>
@@ -52,7 +53,7 @@
 
       <section class="content-grid">
         <article class="schedule-card">
-          <div class="section-header inverse"><div><span class="section-kicker">TODAY</span><h2 id="todayDate">Today</h2></div><button type="button" class="ghost-button" id="addBlockBtn">+ Time block</button></div>
+          <div class="section-header inverse"><div><span class="section-kicker">TODAY</span><h2 id="todayDate">Today</h2></div><button type="button" class="ghost-button" id="addBlockBtn">+ Appointment / time block</button></div>
           <div class="timeline" id="timeline"></div>
           <blockquote id="scheduleMessage">“Protect what matters before filling what is empty.” <cite>— Gigi</cite></blockquote>
         </article>
@@ -72,8 +73,8 @@
     </main>
 
     <section class="secondary-view" id="calendarView" hidden>
-      <div class="page-heading"><span>Calendar</span><h2>Realistic time, not wishful time.</h2><p>Local Gigi planning protects duration, buffers, breaks and deep-work time.</p></div>
-      <div class="page-actions"><button class="primary-action" id="calendarAddBtn" type="button">+ Add time block</button><button class="secondary-action" id="calendarTodayBtn" type="button">Today</button></div>
+      <div class="page-heading"><span>Appointments & Day Structure</span><h2>Realistic time, not wishful time.</h2><p>Enter fixed appointments and commitments. Gigi protects buffers, breaks, food, water prompts, personal growth and deep-work time around them.</p></div>
+      <div class="page-actions"><button class="primary-action" id="calendarAddBtn" type="button">+ Add appointment / block</button><button class="secondary-action" id="calendarTodayBtn" type="button">Today</button></div>
       <div class="calendar-list" id="calendarList"></div>
     </section>
 
@@ -119,9 +120,10 @@
 
   <dialog id="actionDialog" class="action-dialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button></form><div id="dialogContent"></div></dialog>
   <dialog id="captureDialog" class="action-dialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button></form><div class="dialog-body"><span class="dialog-kicker">QUICK CAPTURE</span><h3>Tell Gigi what must not be forgotten.</h3><form id="captureForm" class="gigi-form"><label>Put it in<select name="collection"><option value="inbox">Inbox</option><option value="actions">Action</option><option value="approvals">Approval</option><option value="waiting">Waiting on someone</option><option value="deadlines">Deadline</option><option value="decisions">Decision</option><option value="ideas">Idea</option><option value="meetings">Meeting</option><option value="followups">Follow-up</option></select></label><label>Title<input name="title" maxlength="140" required placeholder="What needs remembering?" /></label><label>Owner / person<input name="owner" maxlength="80" placeholder="Optional" /></label><label>Due date<input name="due" type="date" /></label><label>Priority<select name="priority"><option>Normal</option><option>High</option><option>Critical</option><option>Low</option></select></label><label class="wide">Details<textarea name="details" rows="4" maxlength="1200" placeholder="Operational or personal context only. No therapy notes or clinical narrative."></textarea></label><div class="dialog-actions wide"><button class="primary-action" type="submit">Save to Gigi</button></div></form></div></dialog>
-  <dialog id="scheduleDialog" class="action-dialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button></form><div class="dialog-body"><span class="dialog-kicker">TIME PROTECTION</span><h3>Add a real time block</h3><form id="scheduleForm" class="gigi-form"><label>Date<input name="date" type="date" required /></label><label>Title<input name="title" maxlength="100" required /></label><label>Start<input name="start" type="time" required /></label><label>End<input name="end" type="time" required /></label><label>Category<select name="category"><option>Business</option><option>Clinical</option><option>Supervision</option><option>Admin</option><option>Personal</option><option>Break</option></select></label><label>Protection<select name="protected"><option value="yes">Protected</option><option value="no">Flexible</option></select></label><div class="dialog-actions wide"><button class="primary-action" type="submit">Protect this time</button></div></form></div></dialog>
+  <dialog id="scheduleDialog" class="action-dialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button></form><div class="dialog-body"><span class="dialog-kicker">TIME PROTECTION</span><h3>Add an appointment or real time block</h3><form id="scheduleForm" class="gigi-form"><label>Date<input name="date" type="date" required /></label><label>Title<input name="title" maxlength="100" required /></label><label>Start<input name="start" type="time" required /></label><label>End<input name="end" type="time" required /></label><label>Category<select name="category"><option>Business</option><option>Clinical</option><option>Supervision</option><option>Admin</option><option>Personal</option><option>Break</option></select></label><label>Protection<select name="protected"><option value="yes">Protected</option><option value="no">Flexible</option></select></label><div class="dialog-actions wide"><button class="primary-action" type="submit">Protect this time</button></div></form></div></dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="/gigi.js" defer></script>
+  <script src="/day-architect.js" defer></script>
 </body>
 </html>
