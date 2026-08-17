@@ -2,10 +2,19 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
-    {"source":"/(.*)","headers":[
-      {"key":"X-Content-Type-Options","value":"nosniff"},
-      {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
-      {"key":"Permissions-Policy","value":"microphone=(self), camera=(), geolocation=()"}
-    ]}
+    {
+      "source": "/(.*)",
+      "headers": [
+        {"key":"X-Content-Type-Options","value":"nosniff"},
+        {"key":"X-Frame-Options","value":"DENY"},
+        {"key":"Referrer-Policy","value":"no-referrer"},
+        {"key":"Cross-Origin-Opener-Policy","value":"same-origin"},
+        {"key":"Cross-Origin-Resource-Policy","value":"same-origin"},
+        {"key":"X-Robots-Tag","value":"noindex, nofollow, noarchive, nosnippet"},
+        {"key":"Cache-Control","value":"no-store, max-age=0"},
+        {"key":"Permissions-Policy","value":"microphone=(self), camera=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=(), interest-cohort=()"},
+        {"key":"Content-Security-Policy","value":"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; worker-src 'self'; manifest-src 'self'"}
+      ]
+    }
   ]
 }
