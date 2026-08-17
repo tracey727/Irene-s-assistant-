@@ -7,3 +7,250 @@
 .security-panel{display:grid;gap:12px}.security-panel .secure-row{border:1px solid #e9e1db;background:#fbfaf8;border-radius:14px;padding:13px}.security-panel .button-row{display:flex;gap:9px;flex-wrap:wrap}.security-panel button{border-radius:999px;border:1px solid #ded4cd;background:#fff;padding:10px 13px;color:#57383e;font-weight:700;cursor:pointer}
 @media(max-width:900px){.wellbeing-card{grid-template-columns:1fr}.gigi-form{grid-template-columns:1fr}.gigi-form .wide{grid-column:1}.review-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.protection-row{align-items:flex-start;flex-direction:column}.gate-card{padding:22px 18px;border-radius:22px}.gate-promises{grid-template-columns:1fr}.review-grid{grid-template-columns:1fr}.wellbeing-banner{align-items:flex-start;flex-direction:column}.manager-item{grid-template-columns:1fr}.manager-actions{justify-content:flex-end}}
+
+/* =========================================================
+   GIGI SIGNATURE LUXURY SKIN
+   Irene's warm, high-class executive assistant with a subtle
+   South African heritage thread: protea, gold, wine and calm.
+   ========================================================= */
+:root{
+  --gigi-wine:#99161f;
+  --gigi-wine-deep:#771019;
+  --gigi-ruby:#bd2631;
+  --gigi-gold:#c69a43;
+  --gigi-gold-light:#ead5a3;
+  --gigi-ink:#2c2323;
+  --gigi-muted:#746a68;
+  --gigi-cream:#fffaf5;
+  --gigi-paper:#fffdf9;
+  --gigi-blush:#faece8;
+  --gigi-sage:#f8faf6;
+  --gigi-line:rgba(117,67,53,.13);
+  --gigi-shadow:0 14px 38px rgba(90,38,27,.075);
+}
+html{background:#f4efe9}
+body{background:radial-gradient(circle at 50% -15%,#fffdfa 0,#f8f3ed 44%,#eee8e1 100%);color:var(--gigi-ink);padding-top:14px}
+.app-shell{background:linear-gradient(180deg,#fffaf6 0%,#fbf8f4 100%);border:1px solid rgba(105,61,50,.11);box-shadow:0 30px 90px rgba(67,31,24,.14);border-radius:36px}
+
+/* Hero: airy, feminine, executive — not a dark dashboard */
+.hero{
+  min-height:390px;
+  background:
+    radial-gradient(circle at 14% 18%,rgba(255,255,255,.98),rgba(255,255,255,0) 42%),
+    radial-gradient(circle at 78% 25%,rgba(248,229,222,.7),rgba(248,229,222,0) 34%),
+    linear-gradient(145deg,#fffdf9 0%,#fff9f4 58%,#f9f3ed 100%);
+  color:var(--gigi-ink);
+  padding:46px 52px 32px;
+  grid-template-columns:1.08fr .98fr .95fr;
+  grid-template-areas:"copy voice heritage" "brand voice heritage" "status status status";
+  grid-template-rows:auto 1fr auto;
+  gap:4px 26px;
+  border-bottom:1px solid rgba(198,154,67,.24);
+}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:14px;height:18px;background:linear-gradient(174deg,transparent 46%,rgba(198,154,67,.88) 47% 49%,transparent 50%);opacity:.8;pointer-events:none}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 28%,rgba(198,154,67,.05),transparent 24%),linear-gradient(115deg,transparent 35%,rgba(255,255,255,.75) 48%,transparent 62%);pointer-events:none}
+.hero-glow-one{width:260px;height:260px;background:#f5d8d4;opacity:.35;top:-140px;left:-90px;filter:blur(38px)}
+.hero-glow-two{width:300px;height:300px;background:#ead4a4;opacity:.13;right:19%;bottom:-210px;filter:blur(45px)}
+.hero-copy{align-self:start;padding-top:7px}
+.hero-copy .eyebrow{display:inline;color:#342c2b;font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.15rem,2.2vw,1.55rem);letter-spacing:0;margin:0;font-weight:400}
+.hero-copy h1{display:inline;margin-left:7px;color:var(--gigi-wine);font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.45rem,2.5vw,1.85rem);font-style:italic;line-height:1;font-weight:400}
+.hero-copy h1 span{font-size:.55em;color:var(--gigi-gold)}
+.hero-subtitle{max-width:250px;margin:22px 0 0;color:#4d4543;font-family:Georgia,"Times New Roman",serif;font-size:1rem;line-height:1.55}
+.brand-lockup{grid-area:brand;text-align:left;align-self:start;padding:0;margin-top:-4px;color:var(--gigi-wine)}
+.crown{display:none}
+.gigi-script{font-family:Georgia,"Times New Roman",serif;font-style:normal;font-size:clamp(5rem,8vw,7.2rem);line-height:.9;color:var(--gigi-wine);letter-spacing:-.055em;text-shadow:0 7px 28px rgba(143,16,25,.08);position:relative;width:max-content}
+.gigi-script:after{content:"◆";position:absolute;right:-20px;top:0;font-size:.16em;color:var(--gigi-gold);transform:rotate(45deg)}
+.brand-caption{text-transform:none;letter-spacing:.05em;font-family:Georgia,"Times New Roman",serif;font-size:.86rem;color:#8b6b36;margin:12px 0 0 5px}
+
+/* South African heritage is woven in, not labelled */
+.heritage-token{grid-area:heritage;position:relative;align-self:stretch;width:100%;min-height:270px;color:transparent;font-size:0;display:block;background:url('/assets/protea-luxury.svg') center right/contain no-repeat;opacity:.98;z-index:1}
+.heritage-token svg,.heritage-token span{display:none!important}
+.heritage-token:before{content:"";position:absolute;top:-8px;left:-35px;width:96px;height:76px;background:url('/assets/south-africa-heart.svg') center/contain no-repeat;opacity:.92}
+.heritage-token:after{content:"home, quietly carried";position:absolute;right:9px;bottom:15px;color:#a77c37;font-family:Georgia,"Times New Roman",serif;font-size:.68rem;font-style:italic;letter-spacing:.03em;opacity:.72}
+
+/* Gigi voice control resembles a piece of jewellery rather than a settings switch */
+.voice-console{grid-area:voice;align-self:center;justify-self:center;width:min(360px,100%);max-width:360px;margin:18px 0 0;border:0;box-shadow:none;border-radius:0;background:transparent;display:grid;grid-template-columns:74px 1fr;grid-template-areas:"toggle toggle" "mic wave";gap:14px 14px;padding:0;overflow:visible}
+.voice-toggle-group{grid-area:toggle;display:block;color:transparent;font-size:0;position:relative}
+.voice-toggle-group>span{display:none}
+.lux-toggle{width:100%;height:92px;border-radius:46px;border:2px solid #bd8d38;background:linear-gradient(145deg,#b61f2b 0%,#8b111b 53%,#6f0a13 100%);box-shadow:inset 0 0 0 2px rgba(255,225,155,.24),inset 0 -10px 22px rgba(70,4,11,.28),0 10px 25px rgba(115,18,24,.16),0 0 0 4px rgba(198,154,67,.08);padding:20px 84px 15px 34px;display:flex;align-items:flex-end;color:#fff4d3;position:relative;font-family:Georgia,"Times New Roman",serif;letter-spacing:0}
+.lux-toggle:before{content:"Gigi Voice";position:absolute;left:34px;top:17px;color:#f1dfb4;font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;font-weight:400;letter-spacing:.02em}
+.lux-toggle .toggle-label{font-size:1.65rem;font-weight:400;line-height:1}
+.lux-toggle .toggle-knob{right:9px;top:9px;width:70px;height:70px;background:radial-gradient(circle at 34% 30%,#fff2bd 0,#e2b95c 38%,#b37a22 75%,#865315 100%);border:1px solid #f5dda1;box-shadow:inset 0 0 0 2px rgba(104,63,8,.15),0 4px 14px rgba(115,69,15,.28),0 0 22px rgba(215,171,73,.24)}
+.lux-toggle .toggle-knob:after{content:"≋";position:absolute;inset:0;display:grid;place-items:center;color:#6f4210;font-family:Georgia,serif;font-size:1.15rem;letter-spacing:-.14em}
+.lux-toggle:not(.is-on){background:linear-gradient(145deg,#b9aaa5,#887a76);border-color:#c8ad7a;color:#fff}
+.lux-toggle:not(.is-on) .toggle-knob{right:calc(100% - 79px);background:radial-gradient(circle at 34% 30%,#f2e6d4,#b7a58f)}
+.mic-button{grid-area:mic;width:68px;height:68px;justify-self:end;border:1px solid #f1d7a0;background:linear-gradient(145deg,#b91f2c,#8d111b);color:#fff7ea;box-shadow:0 7px 20px rgba(143,17,26,.18),0 0 0 7px rgba(176,29,41,.05)}
+.mic-button svg{width:28px}
+.wave{grid-area:wave;height:68px;justify-content:flex-start;gap:4px;padding-left:7px}
+.wave i{background:linear-gradient(#d3a850,#9b6d26);width:2px;opacity:.66}
+.speak-hint{left:74px;transform:none;bottom:-26px;background:#fff4f0;border:1px solid #f1d9d2;color:var(--gigi-wine);border-radius:999px;padding:8px 18px;font-style:normal;font-family:Georgia,"Times New Roman",serif;font-size:.85rem;box-shadow:0 6px 18px rgba(106,43,33,.07);white-space:nowrap}
+.voice-status{color:#887b78;font-family:Georgia,"Times New Roman",serif;font-size:.78rem;margin-top:8px;padding-bottom:7px}
+
+.dashboard,.secondary-view{background:transparent;padding:30px 32px 36px}
+.security-strip{margin:0 0 20px;border:1px solid rgba(198,154,67,.22);background:rgba(255,253,249,.88);box-shadow:none;color:#796c67;border-radius:16px;padding:10px 14px}
+.security-strip b{color:#6f4f2a;font-family:Georgia,serif;font-weight:500}
+.security-strip button{border:0;background:transparent;color:var(--gigi-wine);font-weight:700}
+
+/* Executive summary: one jewel card, three porcelain cards */
+.metrics-grid{gap:16px;align-items:stretch}
+.metric-card{min-height:155px;background:linear-gradient(180deg,#fffefa,#fffaf6);border:1px solid var(--gigi-line);border-radius:22px;padding:20px;box-shadow:var(--gigi-shadow)}
+.metric-card:hover{border-color:rgba(153,22,31,.22);box-shadow:0 18px 44px rgba(90,38,27,.11)}
+.metric-icon{width:40px;height:40px;background:#fbefeb;color:var(--gigi-wine);border:1px solid #f2d7d1;margin-bottom:12px}
+.metric-label{color:#6f6260;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase}
+.metric-card strong{font-family:Georgia,"Times New Roman",serif;color:#5f171b;font-weight:400;font-size:2.15rem}
+.metric-card small{color:#8b7b78}
+.metric-card:first-child{background:linear-gradient(145deg,#b9232e 0%,#98151f 48%,#731019 100%);border-color:#7f1119;color:#fff;box-shadow:0 18px 38px rgba(122,15,24,.18);overflow:hidden}
+.metric-card:first-child:after{content:"";position:absolute;left:-5%;right:-5%;bottom:5px;height:24px;background:linear-gradient(175deg,transparent 45%,rgba(230,194,111,.9) 46% 49%,transparent 50%);opacity:.9}
+.metric-card:first-child .metric-icon{background:rgba(255,255,255,.09);border-color:rgba(255,232,183,.34);color:#ffe8b3}
+.metric-card:first-child .metric-label,.metric-card:first-child strong,.metric-card:first-child small{color:#fff7ec}
+.metric-card:first-child .mini-progress{background:rgba(255,255,255,.16)}
+.metric-card:first-child .mini-progress i{background:linear-gradient(90deg,#f6df9e,#c99131)}
+
+.protection-row{margin:18px 0 0;background:rgba(255,253,249,.85);border:1px solid rgba(198,154,67,.18);box-shadow:none;border-radius:18px;padding:14px 18px}
+.protection-row b{font-family:Georgia,serif;font-weight:500;color:#5b3536}
+.protection-row button{border-color:#eadbd3;background:#fffaf6;color:#8e1721}
+
+/* Today card now matches the approved porcelain/red/gold design */
+.content-grid{gap:16px;margin-top:18px;grid-template-columns:minmax(0,1.55fr) minmax(285px,.85fr)}
+.schedule-card{background:linear-gradient(180deg,#fffefa,#fffaf7);color:var(--gigi-ink);border:1px solid var(--gigi-line);border-radius:24px;padding:24px;box-shadow:var(--gigi-shadow)}
+.section-header.inverse .section-kicker{color:var(--gigi-ruby)}
+.section-header.inverse h2{color:#7b171d;font-family:Georgia,"Times New Roman",serif;font-size:1.55rem}
+.ghost-button{background:#fff7f3;border:1px solid #efd8d1;color:var(--gigi-wine)}
+.timeline{margin-top:18px}
+.event-row{grid-template-columns:92px 25px 1fr 30px;min-height:90px;background:#fff;border:1px solid rgba(126,71,57,.09);box-shadow:0 6px 16px rgba(93,40,30,.045);margin:9px 0;padding:11px 10px;border-radius:18px}
+.event-row:hover{background:#fffdfa}
+.event-row.protected{background:linear-gradient(90deg,#fff9f6,#fff3ef);border:1px solid #eed7d0}
+.event-time{color:#4c4140}
+.event-time b{color:#2e2625}
+.timeline-node:before{background:#e6c5bd;top:-22px;bottom:-22px}
+.timeline-node i{background:#a81824;box-shadow:0 0 0 5px #f9ece8}
+.event-info strong{color:#332929;font-family:Georgia,"Times New Roman",serif}
+.event-info span{color:#7b6f6c}
+.event-tag{color:var(--gigi-gold)}
+.schedule-card blockquote{border-top:1px solid #efe2dc;color:#886b49;padding-top:15px;font-size:.9rem}
+
+.attention-card,.priority-card{background:linear-gradient(180deg,#fffefa,#fffaf6);border:1px solid var(--gigi-line);border-radius:23px;box-shadow:var(--gigi-shadow)}
+.attention-card{padding:22px}
+.section-kicker{color:var(--gigi-ruby)}
+.section-header h2{font-family:Georgia,"Times New Roman",serif;color:#6f191e;font-weight:400}
+.attention-item{border-top:1px solid #eee1db}
+.attention-item:hover{background:#fff6f2}
+.attention-item .icon{color:#b91e2a}
+.attention-item b{color:#332929}
+.attention-item small{color:#847572}
+.priority-card{background:linear-gradient(145deg,#fffdf9 0,#fff8f3 100%);min-height:185px}
+.priority-card:after{content:"";position:absolute;right:-14px;bottom:-28px;width:150px;height:150px;background:url('/assets/protea-luxury.svg') center/contain no-repeat;opacity:.18;pointer-events:none}
+.priority-head{color:#9c1a24}
+.priority-card strong{font-family:Georgia,"Times New Roman",serif;color:#5d171b;font-weight:400}
+.mountain{display:none}
+
+/* Wellbeing becomes a refined companion panel */
+.wellbeing-card{background:linear-gradient(180deg,#fffefa,#fffaf7);border:1px solid var(--gigi-line);box-shadow:var(--gigi-shadow);border-radius:23px;padding:20px 22px}
+.wellbeing-card:before{width:3px;background:linear-gradient(#d7ae5d,#a41420)}
+.wellbeing-card:after{content:"";position:absolute;right:0;bottom:-36px;width:130px;height:130px;background:url('/assets/protea-luxury.svg') center/contain no-repeat;opacity:.09;pointer-events:none}
+.wellbeing-card h3{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:#5f282b}
+.wellbeing-card p{color:#7e706d}
+.wellbeing-quick button{border:1px solid #eadbd3;background:#fffaf7;color:#75151c;box-shadow:0 4px 10px rgba(88,40,30,.03)}
+.snack-suggestion{background:#f9fbf7;border:1px solid #eef0e8}
+.snack-suggestion b{color:#6b715f}
+
+.reassurance-bar{background:linear-gradient(180deg,#fffefa,#fff9f4);border:1px solid rgba(198,154,67,.32);border-radius:23px;box-shadow:0 8px 24px rgba(97,52,35,.045)}
+.reassurance-bar strong{font-family:Georgia,"Times New Roman",serif;color:#5d292b;font-weight:400}
+.medallion{background:radial-gradient(circle at 34% 28%,#fff4c8,#d3aa55 52%,#99641f);box-shadow:0 5px 15px rgba(133,84,18,.2)}
+
+/* Action centre, reviews and dialogs */
+.module-grid{gap:14px}
+.module-card{background:linear-gradient(180deg,#fffefa,#fffaf7);border:1px solid var(--gigi-line);border-radius:20px;box-shadow:var(--gigi-shadow);min-height:135px}
+.module-card:hover{border-color:rgba(153,22,31,.22);box-shadow:0 16px 34px rgba(90,38,27,.1)}
+.module-card b{font-family:Georgia,"Times New Roman",serif;color:#5c2428;font-weight:400;font-size:1.05rem}
+.module-card span{color:#817370}
+.module-card em{color:#8e1a24;background:#fff0ed;border:1px solid #efd9d4}
+.page-heading>span{color:#a91a25}
+.page-heading h2{font-family:Georgia,"Times New Roman",serif;color:#67191f;font-weight:400}
+.page-heading p{color:#7c6f6c}
+.calendar-row{background:#fffefa;border:1px solid var(--gigi-line);border-radius:17px;box-shadow:0 6px 18px rgba(86,39,30,.045)}
+.action-dialog,.secure-workspace{border:1px solid #eadbd3;background:#fffdf9;box-shadow:0 30px 80px rgba(65,26,22,.18)}
+.dialog-body h3{font-family:Georgia,"Times New Roman",serif;color:#641c21;font-weight:400}
+.manager-item,.review-stat,.security-panel .secure-row{background:#fffaf7;border-color:#eee0d9}
+.primary-action{background:linear-gradient(145deg,#aa1d28,#7d1119)!important;border-color:#7d1119!important;box-shadow:0 7px 18px rgba(128,16,24,.13)}
+
+/* The vault should feel private and beautiful, never like a generic login form */
+.gate-overlay{background:rgba(50,29,26,.34);backdrop-filter:blur(16px)}
+.gate-card{background:linear-gradient(155deg,#fffefb 0%,#fff9f4 68%,#f9f6ef 100%);border:1px solid rgba(198,154,67,.28);border-radius:30px;box-shadow:0 34px 100px rgba(52,25,20,.22);position:relative;overflow:hidden}
+.gate-card:before{content:"";position:absolute;right:-55px;top:-65px;width:235px;height:235px;background:url('/assets/protea-luxury.svg') center/contain no-repeat;opacity:.12;pointer-events:none}
+.gate-card:after{content:"";position:absolute;left:24px;top:25px;width:70px;height:55px;background:url('/assets/south-africa-heart.svg') center/contain no-repeat;opacity:.55;pointer-events:none}
+.gate-mark{background:radial-gradient(circle at 35% 30%,#fff4c8,#d2a349 55%,#8a5b18);box-shadow:0 8px 20px rgba(128,82,20,.18);border:1px solid #f0d9a1}
+.gate-card h2{font-family:Georgia,"Times New Roman",serif;color:#681c22;font-weight:400;font-size:1.7rem}
+.gate-form input{background:#fffefa;border-color:#e6d8d0}
+.gate-primary{background:linear-gradient(145deg,#ad1e29,#801119);box-shadow:0 8px 20px rgba(128,16,24,.15)}
+.gate-promises span{background:#fffaf7;border-color:#eee2dc}
+
+/* Bottom navigation from the approved Gigi mock — light porcelain, ruby active tab, gold G */
+.bottom-nav{height:84px;background:rgba(255,251,247,.97);backdrop-filter:blur(16px);border-top:1px solid rgba(113,66,54,.12);box-shadow:0 -10px 28px rgba(75,37,28,.07);padding:0 28px}
+.nav-item{color:#403636;opacity:.82;min-height:64px;border-radius:18px;align-content:center;transition:.2s}
+.nav-item span{font-size:1.35rem}
+.nav-item small{font-size:.7rem}
+.nav-item.active{opacity:1;color:#fff;background:linear-gradient(145deg,#b61f2b,#8c121b);box-shadow:0 8px 20px rgba(135,18,27,.17);margin:7px 4px;padding:7px 5px}
+.nav-gigi{width:72px;height:72px;margin-top:-28px;background:radial-gradient(circle at 35% 30%,#fff5cf 0,#d7ad57 42%,#9a651e 100%);border:5px solid #fffaf6;box-shadow:0 7px 20px rgba(102,65,18,.18),0 0 0 1px rgba(198,154,67,.22);color:#6e4010}
+.nav-gigi .nav-wave{font-size:0}
+.nav-gigi .nav-wave:after{content:"G";font-family:Georgia,"Times New Roman",serif;font-size:2rem;color:#9d6d25}
+
+/* Details that make Gigi feel composed, not busy */
+.privacy-boundary{background:#fffaf7;border-color:#eee1da;color:#796b68}
+.review-notes{background:#fff8ee;border-color:#eddcc4}
+.wellbeing-banner{background:linear-gradient(145deg,#971722,#711019);border:1px solid #d3ac5e;box-shadow:0 20px 55px rgba(94,16,22,.22)}
+.wellbeing-banner b{color:#f1dba8;font-family:Georgia,serif;font-weight:400}
+
+@media(max-width:900px){
+  body{padding:0 0 96px;background:#fffaf6}
+  .app-shell{border-radius:0;border:0;box-shadow:none;min-height:100vh}
+  .hero{min-height:430px;padding:34px 28px 30px;grid-template-columns:1fr 1fr;grid-template-areas:"copy heritage" "brand heritage" "voice voice" "status status";gap:0 14px}
+  .heritage-token{min-height:190px;background-position:center right}
+  .heritage-token:before{left:-18px;width:78px;height:62px}
+  .heritage-token:after{display:none}
+  .voice-console{width:min(390px,94%);max-width:390px;margin:10px auto 0}
+  .dashboard,.secondary-view{padding:22px 18px 30px}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .content-grid{grid-template-columns:1fr}
+  .wellbeing-card{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .hero{min-height:430px;padding:30px 20px 28px;grid-template-columns:1.12fr .88fr;grid-template-areas:"copy heritage" "brand heritage" "voice voice" "status status"}
+  .hero-copy .eyebrow{font-size:1.12rem}
+  .hero-copy h1{font-size:1.35rem}
+  .hero-subtitle{font-size:.86rem;max-width:175px;margin-top:16px;line-height:1.45}
+  .gigi-script{font-size:4.2rem;margin-top:4px}
+  .brand-caption{font-size:.68rem;margin-top:7px}
+  .heritage-token{min-height:170px;background-size:190px auto;background-position:45% 60%}
+  .heritage-token:before{left:-12px;top:-5px;width:62px;height:48px}
+  .voice-console{grid-template-columns:62px 1fr;width:100%;margin-top:10px;gap:9px 10px}
+  .lux-toggle{height:76px;padding:18px 70px 12px 27px}
+  .lux-toggle:before{left:27px;top:13px;font-size:.9rem}
+  .lux-toggle .toggle-label{font-size:1.35rem}
+  .lux-toggle .toggle-knob{width:58px;height:58px;right:8px;top:8px}
+  .lux-toggle:not(.is-on) .toggle-knob{right:calc(100% - 66px)}
+  .mic-button{width:58px;height:58px}
+  .wave{height:58px}
+  .speak-hint{left:62px;bottom:-25px;padding:7px 14px;font-size:.76rem}
+  .voice-status{margin-top:10px;font-size:.72rem}
+  .security-strip{font-size:.72rem;padding:8px 10px;gap:7px;flex-wrap:wrap}
+  .metrics-grid{gap:10px}
+  .metric-card{min-height:135px;padding:15px;border-radius:18px}
+  .metric-icon{width:34px;height:34px;margin-bottom:8px}
+  .metric-label{font-size:.66rem}
+  .metric-card strong{font-size:1.78rem}
+  .metric-card small{font-size:.72rem}
+  .content-grid{gap:12px;margin-top:14px}
+  .schedule-card,.attention-card,.priority-card{border-radius:20px;padding:18px}
+  .event-row{grid-template-columns:72px 20px 1fr 20px;min-height:82px;padding:9px 7px}
+  .event-time{font-size:.72rem}
+  .event-info strong{font-size:.9rem}
+  .event-info span{font-size:.72rem}
+  .wellbeing-card{padding:18px}
+  .reassurance-bar{grid-template-columns:46px 1fr;padding:14px;gap:11px}
+  .reassurance-bar button{grid-column:1/-1;border-left:0;border-top:1px solid rgba(198,154,67,.25);padding:11px 0 0;margin-top:4px}
+  .bottom-nav{padding:0 8px;grid-template-columns:1fr 1fr 76px 1fr 1fr}
+  .nav-item small{font-size:.62rem}
+  .nav-gigi{width:64px;height:64px}
+  .nav-gigi .nav-wave:after{font-size:1.7rem}
+}
