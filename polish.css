@@ -1,0 +1,78 @@
+/* Irene visual refinement — cleaner executive hierarchy, lighter sage, less visual blending */
+:root{
+  --surface:#ffffff;
+  --surface-soft:#fbfaf7;
+  --surface-warm:#f7f2ec;
+  --surface-rose:#fbf4f4;
+  --sage-050:#f5f8f5;
+  --sage-100:#edf3ee;
+  --sage-200:#e4ece6;
+  --sage-500:#819487;
+  --sage-700:#5f7266;
+  --line-clean:#e7dfd8;
+  --line-strong:#d9ccc3;
+  --shadow-clean:0 8px 24px rgba(45,25,28,.055);
+  --shadow-lift:0 16px 40px rgba(45,25,28,.085);
+}
+html,body{background:#f3f0ec}
+body{color:#2d2224}
+.app-shell{background:#f8f6f2;border:1px solid #ddd4cc;box-shadow:0 24px 70px rgba(52,25,30,.12)}
+.hero{background:#3a0810;box-shadow:inset 0 -1px 0 rgba(255,255,255,.08)}
+.hero:after{opacity:.3}
+.hero-glow-one{opacity:.08}
+.hero-glow-two{opacity:.05}
+.dashboard,.secondary-view{background:#f8f6f2}
+.metrics-grid{gap:22px}
+.metric-card{background:#fff;border:1px solid var(--line-clean);box-shadow:var(--shadow-clean);border-radius:20px;min-height:170px}
+.metric-card:hover{border-color:#cdbdc0;box-shadow:var(--shadow-lift)}
+.metric-label{color:#74666a;font-weight:600;letter-spacing:.01em}
+.metric-card strong{color:#3b2428}
+.metric-card small{color:#8c7e81}
+.metric-card small.positive{display:inline-flex;align-items:center;width:max-content;background:var(--sage-100);color:var(--sage-700);border:1px solid var(--sage-200);border-radius:999px;padding:5px 9px;margin-top:4px;font-weight:650}
+.metric-icon{background:#f5ecee;color:#7f1a2a;border:1px solid #ead9dc}
+.mini-progress{background:#efe9e4}
+.content-grid{gap:22px;margin-top:24px}
+.schedule-card{background:#4a0d17;border:1px solid #5c1722;box-shadow:0 14px 34px rgba(57,8,16,.16);border-radius:22px}
+.attention-card,.priority-card{background:#fff;border:1px solid var(--line-clean);box-shadow:var(--shadow-clean);border-radius:20px}
+.attention-card{padding:26px}
+.attention-item{border-top:1px solid #eee7e1;padding:17px 2px}
+.attention-item:hover{background:#faf7f4}
+.count-badge.soft{background:#f2eadb;color:#806438;border:1px solid #e6d8bd}
+.priority-card{background:#fff}
+.reassurance-bar{background:#fff;border:1px solid var(--line-clean);box-shadow:var(--shadow-clean);border-radius:20px}
+.security-strip{background:#fff;border:1px solid var(--line-clean);box-shadow:var(--shadow-clean);color:#6e5c60}
+.security-strip b{color:#4c242b}
+.load-guard{background:#fff;border:1px solid var(--line-clean);box-shadow:var(--shadow-clean);border-radius:20px}
+.load-metrics span{background:#faf8f5;border:1px solid #ece5df;color:#75686b}
+.load-metrics b{color:#4a2f34}
+.load-alerts span{color:#735e62}
+.wellbeing-card{background:#fff;border:1px solid var(--line-clean);box-shadow:var(--shadow-clean);border-radius:20px;position:relative;overflow:hidden}
+.wellbeing-card:before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--sage-200)}
+.wellbeing-card h3{color:#3f2c30}
+.wellbeing-card p{color:#7d6f72}
+.wellbeing-quick button{background:#fff;border:1px solid #e4ddd7;color:#5c464b}
+.wellbeing-quick button:hover{background:#faf8f5}
+.snack-suggestion{background:var(--sage-050);border:1px solid var(--sage-200)}
+.snack-suggestion b{color:var(--sage-700)}
+.snack-suggestion span{color:#4d4244}
+.snack-suggestion small{color:#8a7f81}
+.module-grid{gap:18px}
+.module-card{background:#fff;border:1px solid var(--line-clean);box-shadow:var(--shadow-clean);border-radius:18px;min-height:145px}
+.module-card:hover{border-color:#cdbfc2;box-shadow:var(--shadow-lift)}
+.module-card b{color:#47262d}
+.module-card span{color:#817377}
+.module-card em{color:#8f3140;background:#fbf1f3;border:1px solid #ecdadd;border-radius:999px;padding:5px 8px;display:inline-block}
+.calendar-row{background:#fff;border:1px solid var(--line-clean);box-shadow:0 5px 14px rgba(45,25,28,.035);border-radius:16px}
+.page-heading h2{color:#3f252b}
+.page-heading p{color:#817377}
+.action-dialog,.secure-workspace{background:#fff;border:1px solid var(--line-clean)}
+.dialog-list li,.audit-list div,.snack-library>div{background:#fbfaf8;border-color:#e9e2dd}
+.secure-note{background:#fbfaf8;border-color:#e9e2dd}
+.privacy-card{background:#fff;border:1px solid #dfd5cd;box-shadow:0 28px 70px rgba(30,12,16,.22)}
+.privacy-promises span{background:#faf8f5;border:1px solid #e9e1db}
+.gigi-wellbeing-banner{background:#45101a;border-color:#d8bd82}
+.bottom-nav{background:#2f070d;box-shadow:0 -8px 24px rgba(57,8,16,.10)}
+/* Make any success/green treatment intentionally very faded */
+.positive,.success,.status-success,[data-status="success"]{color:var(--sage-700)!important}
+.success,.status-success,[data-status="success"]{background:var(--sage-100)!important;border-color:var(--sage-200)!important}
+@media(max-width:900px){body{background:#f8f6f2}.dashboard,.secondary-view{background:#f8f6f2}.metrics-grid,.content-grid,.module-grid{gap:14px}}
