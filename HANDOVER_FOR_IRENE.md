@@ -1,5 +1,11 @@
 # Gigi — Secure Handover for Irene
 
+## Production app
+
+**Gigi:** https://irene-s-assistant-pggt.vercel.app/
+
+Open this link on Irene's personal device. After the first successful load, Gigi can also be added to the device Home Screen as a standalone web app if desired.
+
 ## What Gigi is
 
 Gigi is Irene's private executive-assistant workspace for time protection, priorities, reminders, follow-up, decisions, delegation, workload protection and day-to-day organisation.
