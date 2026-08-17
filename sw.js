@@ -1,5 +1,5 @@
-const CACHE='gigi-v2-secure';
-const ASSETS=['/','/index.html','/styles.css','/security.css','/app.js','/secure-features.js','/manifest.webmanifest','/assets/gigi-mark.svg'];
+const CACHE='gigi-v3-wellbeing';
+const ASSETS=['/','/index.html','/styles.css','/security.css','/wellbeing.css','/app.js','/secure-features.js','/wellbeing.js','/manifest.webmanifest','/assets/gigi-mark.svg'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))));
 self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return r;}).catch(()=>caches.match(e.request))));
