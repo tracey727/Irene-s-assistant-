@@ -1,0 +1,22 @@
+name: Gigi Assistant CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: test -s index.html
+      - run: test -s app.js
+      - run: test -s gigi.js
+      - run: test -s secure-features.js
+      - run: test -s manifest.webmanifest
+      - run: test -s _headers
+      - run: test ! -e vercel.json
+      - run: node --check app.js
+      - run: node --check gigi.js
+      - run: node --check secure-features.js
